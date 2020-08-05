@@ -1,0 +1,40 @@
+
+
+
+<h1 mat-dialog-title>Suivi de la Commande</h1>
+
+
+<mat-form-field>
+  <input matInput (dateInput)="searchDate()" [(ngModel)]="date" [matDatepicker]="dp" placeholder="Date">
+  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+  <mat-datepicker #dp></mat-datepicker>
+</mat-form-field>
+
+
+<div mat-dialog-content>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>User</th>
+      <th>Action</th>
+      <th>Date</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let log of data.users ">
+      <td>{{log.commande}}</td>
+      <td>{{log.username}}</td>
+      <td>{{log.action}}</td>
+      <td>{{log.date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

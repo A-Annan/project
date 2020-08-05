@@ -1,0 +1,112 @@
+
+
+
+
+
+
+
+<div class="ui-g ui-fluid">
+
+
+  <div class="ui-g-12 ui-md-5">
+    <p-calendar [(ngModel)]="date" (onClearClick)="effacerDate()" showButtonBar="true" dateFormat="dd/mm/yy"  [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" (onSelect)="dateEntrer()" placeholder="Date Debut - Date Fin" selectionMode="range" [locale]="es" [readonlyInput]="true"></p-calendar>
+  </div>
+  <div class="ui-g-12 ui-md-3">
+    <mat-chip-list>
+      <mat-chip  mat-button color="accent" (click)="save()" >Excel</mat-chip>
+      <mat-chip mat-button  color="primary" (click)="pdf()">Pdf</mat-chip>
+      <mat-chip mat-button (click)="ticket()">Tickets</mat-chip>
+      <p-progressSpinner  *ngIf="spinner" [style]="{width: '30px', height: '20px'}"    strokeWidth="4"  animationDuration=".5s"></p-progressSpinner>
+    </mat-chip-list>
+
+
+  </div>
+  <div class="ui-g-12 ui-md-4">
+    <mat-form-field style="float:right;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+    </mat-form-field>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource2" multiTemplateDataRows class="mat-elevation-z8" matSort>
+
+
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+      <th mat-header-cell  *matHeaderCellDef mat-sort-header>
+        <div *ngIf="column != 'select'">{{column}}</div>
+        <div *ngIf="column == 'select'">
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="column != 'select' && column != 'Statut'">{{element[column]}}</div>
+        <div *ngIf="column == 'select'">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(element) : null"
+                        [checked]="selection.isSelected(element)">
+          </mat-checkbox>
+        </div>
+        <div *ngIf="column == 'Statut'">
+          <p-inplace  closable="closable">
+    <span pInplaceDisplay>
+        {{element[column]}}
+    </span>
+            <span pInplaceContent>
+        <p-dropdown [options]="cities" (onChange)="test(element)"  [(ngModel)]="selectedCity" placeholder="Choisir Statut" optionLabel="name" [showClear]="true"></p-dropdown>
+    </span>
+          </p-inplace>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-diagram">
+            <div class="example-element-symbol"> {{element.id}} </div>
+            <div class="example-element-name"> {{element.username}} </div>
+            <div class="example-element-weight"> {{element.tracking}} </div>
+          </div>
+          <div class="example-element-description">
+            <span class="example-element-description-attribution">Addresse -- </span>
+            {{element.Adress}}<br>
+            <span class="example-element-description-attribution">Note -- </span>
+            {{element.Note}}<br><br>
+            <button class="btn"  style="margin: 3px;" (click)="openDialog2(element)"><span class="glyphicon glyphicon-list-alt"></span>
+            </button>
+            <button  class="btn"  *ngIf="getModifierPrivilege()" style="margin: 3px;" (click)="openDialog3(element)" >
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button class="btn"  *ngIf="getSuppPrivilege()" style="margin: 3px;" (click)="openConfirmationDialog(element)" >
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+
+          </div>
+
+        </div>
+      </td>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[15, 25, 50, 100]"></mat-paginator>
+</div>

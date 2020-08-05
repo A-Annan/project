@@ -1,0 +1,184 @@
+
+
+
+
+<mat-card style="align-items: center;">
+  <mat-card-title style="align-items: center;">Synthése Commande</mat-card-title>
+
+
+
+
+
+  <div class="ui-g ui-fluid" style="margin-top: 30px">
+
+
+    <div class="ui-g-12 ui-md-6">
+      <p-calendar [(ngModel)]="date" (onClearClick)="effacerDate()" showButtonBar="true" dateFormat="dd/mm/yy"  [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" (onSelect)="dateEntrer()" placeholder="Date Debut - Date Fin" selectionMode="range" [locale]="es" [readonlyInput]="true"></p-calendar>
+
+    </div>
+    <div class="ui-g-12 ui-md-6"><mat-form-field style="float: right">
+      <mat-select (selectionChange)="userFunction($event.value)" name="user" placeholder="Utilisateur">
+        <mat-option  value="all">All</mat-option>
+        <mat-option *ngFor="let usera of users "  [value]="usera.username">{{usera.username}}</mat-option>
+
+      </mat-select>
+    </mat-form-field></div>
+  </div>
+
+  <div style="margin: 20px">
+  <div class="row">
+
+    <div class="col-sm-4">
+
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('New')" class="btn btn-link">
+        <span class="text-info"><strong>New</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{NEW}}/{{somme}}</i></span>
+      <p-progressBar [value]="NEW_moyen "></p-progressBar>
+    </div>
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('RP1')" class="btn btn-link">
+        <span class="text-info"><strong>RP1</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{RP1}}/{{somme}}</i></span>
+      <p-progressBar [value]="RP1m"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('BV1')" class="btn btn-link">
+        <span class="text-info"><strong>BV1</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{BV1}}/{{somme}}</i></span>
+      <p-progressBar [value]="BV1m"></p-progressBar>
+    </div>
+  </div>
+  </div>
+
+  <mat-divider [inset]="true"></mat-divider>
+
+
+  <div style="margin: 20px">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('NUL1')" class="btn btn-link">
+        <span class="text-info"><strong>NUL1</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{NUL1}}/{{somme}}</i></span>
+      <p-progressBar [value]="NUL1m"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('TILL1')" class="btn btn-link">
+          <span class="text-info"><strong>TILL1</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{TILL1}}/{{somme}}</i></span>
+      <p-progressBar [value]="TILL1m"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+        <span class="skill ">
+
+          <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('Ordered')" class="btn btn-link">
+            <span class="text-info"><strong>Ordered</strong></span>
+          </button>
+          <i class="val" style="float: right;">{{Ordered}}/{{somme}}</i></span>
+      <p-progressBar [value]="Orderedm"></p-progressBar>
+    </div>
+  </div>
+  </div>
+  <mat-divider [inset]="true"></mat-divider>
+  <div style="margin: 20px">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('BV2')" class="btn btn-link">
+          <span class="text-info"><strong>BV2</strong></span>
+        </button><i class="val" style="float: right;">{{BV2}}/{{somme}}</i></span>
+      <p-progressBar [value]="BV2m"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('NUL2')" class="btn btn-link">
+          <span class="text-info"><strong>NUL2</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{NUL2}}/{{somme}}</i></span>
+      <p-progressBar [value]="NUL2m"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('TILL2')" class="btn btn-link">
+          <span class="text-info"><strong>TILL2</strong></span>
+        </button><i class="val" style="float: right;">{{TILL2}}/{{somme}}</i></span>
+      <p-progressBar [value]="TILL2m"></p-progressBar>
+    </div>
+  </div>
+  </div>
+
+  <mat-divider [inset]="true"></mat-divider>
+  <div style="margin: 20px">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('Confirmed')" class="btn btn-link">
+          <span class="text-info"><strong>Confirmed</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{Confirmed}}/{{somme}}</i></span>
+      <p-progressBar [value]="Confirmedm"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('Shipped')" class="btn btn-link">
+          <span class="text-info"><strong>Shipped</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{Shipped}}/{{somme}}</i></span>
+      <p-progressBar [value]="Shippedm"></p-progressBar>
+    </div>
+
+    <div class="col-sm-4">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('RP2')" class="btn btn-link">
+          <span class="text-info"><strong>RP2</strong></span>
+        </button><i class="val" style="float: right;">{{RP2}}/{{somme}}</i></span>
+      <p-progressBar [value]="RP2m"></p-progressBar>
+    </div>
+  </div>
+  </div>
+
+  <mat-divider [inset]="true"></mat-divider>
+  <div style="margin: 20px">
+  <div class="row">
+
+
+
+
+    <div class="col-sm-6">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('Delivred')" class="btn btn-link">
+          <span class="text-info"><strong>Delivred</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{Delivred}}/{{somme}}</i></span>
+      <p-progressBar [value]="Delivredm"></p-progressBar>
+    </div>
+
+    <div class="col-sm-6">
+      <span class="skill ">
+        <button type="button"  style="margin: 0 0 0 0;padding: 0 0 0 0;" (click)="newClicked('Returned')" class="btn btn-link">
+          <span class="text-info"><strong>Returned</strong></span>
+        </button>
+        <i class="val" style="float: right;">{{Returned}}/{{somme}}</i></span>
+      <p-progressBar [value]="Returnedm"></p-progressBar>
+    </div>
+
+  </div>
+  </div>
+</mat-card>
+
+

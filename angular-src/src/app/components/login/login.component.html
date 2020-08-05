@@ -1,0 +1,22 @@
+<form class="form-horizontal" (submit)="login()">
+  <mat-card style="align-items: center;">
+    <div align="center">
+      <mat-card-title>Login</mat-card-title>
+
+
+
+
+      <mat-form-field  style="width: 60%;">
+          <input matInput type="text"  id="username" [(ngModel)]="username" name="username" placeholder="Username">
+      </mat-form-field>
+
+      <mat-form-field  style="width: 60%;">
+          <input matInput type="password"  id="pwd" [(ngModel)]="pass" name="pass" placeholder="Enter password">
+      </mat-form-field>
+
+      <div>
+          <button mat-button type="submit" >Entrer</button>
+      </div>
+    </div>
+  </mat-card>
+</form>

@@ -1,0 +1,101 @@
+
+    <mat-card>
+      <div align="center">
+        <mat-card-title>Ajouter un utilisateur</mat-card-title>
+
+
+        <mat-form-field  style="width: 60%;align-content: center">
+     <input type="text"  matInput [(ngModel)]="username" name="username" id="username" [formControl]="requiredUsername" placeholder="Username">
+          <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+    </mat-form-field>
+        <div *ngIf="valisateUsername" >username existant</div>
+
+
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input matInput placeholder="Email" [(ngModel)]="emaill" [formControl]="email" required name="email">
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="password" matInput  [(ngModel)]="pass" name="pass" id="pwd" [formControl]="requiredpass" placeholder="Mot de passe">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+        <div *ngIf="validatePass" style="align-content: left">Mot de passe different</div>
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="password" matInput [(ngModel)]="vpwd" name="vpwd"  id="vpwd" [formControl]="requiredvpass" placeholder="Valider votre mot de passe">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+        <div *ngIf="validatePass">Mot de passe different</div>
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="text"  id="Nom"  matInput [(ngModel)]="nom" name="nom" [formControl]="requiredNom" placeholder="Nom">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="text" matInput   id="Prenom"  [(ngModel)]="prenom" name="prenom" [formControl]="requiredPrenom" placeholder="Prenom">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="text" matInput  [(ngModel)]="tele" name="tele" id="Telephone" [formControl]="requiredTele" placeholder="Telephone">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="text" matInput  [(ngModel)]="adr" name="adr" id="address" [formControl]="requiredAdresse" placeholder="Adresse">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field  style="width: 60%;align-content: center">
+      <input type="text" matInput   [(ngModel)]="ville" name="ville" id="Ville" [formControl]="requiredVille" placeholder="Ville">
+    <mat-error *ngIf="required.invalid">{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+
+
+
+
+
+        <section style="width: 60%;">
+          <span style="float: left">Autorisation: </span>   <mat-checkbox style="margin: 20px" [(ngModel)]="ajouter">Ajouter</mat-checkbox>
+          <mat-checkbox style="margin: 20px" [(ngModel)]="modifier">Modifer</mat-checkbox>
+          <mat-checkbox  style="margin: 20px" [(ngModel)]="supprimer">Supprimer</mat-checkbox>
+        </section>
+        <div ><button type="submit" style="margin-top: 20px" (click)="inscription()" mat-button>Ajouter</button></div>
+
+
+      </div>
+
+
+    </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

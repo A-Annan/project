@@ -1,0 +1,13 @@
+.jumbotron
+{
+  padding-top: 10px;
+  padding-bottom:10px;
+  background-size: cover;
+  width: 40%; /* make sure to define width to fill container */
+  height: 10%; /* define the height in pixels or make sure   */
+  margin-left: 30%;
+  padding-top: 3%;
+  /* you have something in your div with height */
+  /* so you can see your image */
+  max-width:1400px;  /* define the max width */
+}

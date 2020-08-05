@@ -1,0 +1,79 @@
+
+<form   >
+  <mat-card>
+    <div align="center">
+      <mat-card-title>Modifier utilisateur</mat-card-title>
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text"  matInput  [(ngModel)]="username" name="username" id="username" placeholder="Username">
+      </mat-form-field>
+      <div *ngIf="valisateUsername" >username existant</div>
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input matInput placeholder="Email" [(ngModel)]="emaill" [formControl]="email" required name="email">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+
+
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text"  id="Nom"  matInput [(ngModel)]="Nom" name="Nom" placeholder="Nom">
+      </mat-form-field>
+
+
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="password" matInput  [(ngModel)]="password" name="password" id="password" placeholder="Mot de passe">
+      </mat-form-field>
+      <div *ngIf="validatePass" style="align-content: left">Mot de passe different</div>
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="password" matInput [(ngModel)]="vpassword" name="vpassword"  id="vpassword" placeholder="Valider votre mot de passe">
+      </mat-form-field>
+      <div *ngIf="validatePass">Mot de passe different</div>
+
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text" matInput   id="Prenom"  [(ngModel)]="Prenom" name="Prenom" placeholder="Prenom">
+      </mat-form-field>
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text" matInput  [(ngModel)]="Telephone" name="Telephone" id="Telephone" placeholder="Telephone">
+      </mat-form-field>
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text" matInput  [(ngModel)]="Addresse" name="Addresse" id="Addresse" placeholder="Addresse">
+      </mat-form-field>
+
+
+      <mat-form-field  style="width: 60%;align-content: center">
+        <input type="text" matInput   [(ngModel)]="Ville" name="Ville" id="Ville" placeholder="Ville">
+      </mat-form-field>
+
+
+      <mat-form-field style="width: 60%;">
+        <mat-select [(ngModel)]="type" name="type" placeholder="Type">
+          <mat-option value="admin">admin</mat-option>
+          <mat-option value="user">user</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+
+
+
+      <div ><button  mat-button (click)="modifierUser()" >  Modifier</button><button mat-button [mat-dialog-close]="true" disabled="{{disable}}" >Valider</button> </div>
+
+
+    </div>
+
+
+  </mat-card>
+</form>

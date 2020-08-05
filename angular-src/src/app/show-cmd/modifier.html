@@ -1,0 +1,74 @@
+<div mat-dialog-content>
+  <form class="form-horizontal"  >
+
+    <mat-card >
+      <div align="center">
+        <mat-card-title>Modifier la commande</mat-card-title>
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input  [(ngModel)]="nom" name="nom" id="nom" matInput placeholder="Nom  ">
+        </mat-form-field>
+        <mat-form-field style="width: 60%;align-content: center" hintLabel="Max 10 characters">
+          <input [(ngModel)]="tele" name="tele" id="tele" matInput #input maxlength="10" placeholder="Telephone">
+          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input  [(ngModel)]="adr" name="adr" id="adr" matInput placeholder="Addresse ">
+        </mat-form-field>
+
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input   [(ngModel)]="ville" name="ville" id="ville" matInput placeholder="Ville ">
+        </mat-form-field>
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input   [(ngModel)]="produit" name="produit" id="produit" matInput placeholder="Produit ">
+        </mat-form-field>
+        <mat-form-field  style="width: 60%;">
+          <input   [(ngModel)]="quantite" name="quantite" id="quantite" matInput placeholder="Quantite ">
+        </mat-form-field>
+        <mat-form-field style="width: 60%;">
+          <input matInput placeholder="Prix"  id="prix" name="prix" [(ngModel)]="prix">
+          <span matSuffix>Dhs</span>
+        </mat-form-field>
+        <mat-form-field style="width: 60%;">
+          <mat-select [(ngModel)]="statut" name="statut" placeholder="Statut">
+            <mat-option value="NEW">NEW</mat-option>
+            <mat-option value="RP1">RP1</mat-option>
+            <mat-option value="BV1">BV1</mat-option>
+            <mat-option value="NUL1">NUL1</mat-option>
+            <mat-option value="TILL1">TILL1</mat-option>
+            <mat-option value="Ordered">Ordered</mat-option>
+            <mat-option value="RP2">RP2</mat-option>
+            <mat-option value="BV2">BV2</mat-option>
+            <mat-option value="NUL2">NUL2</mat-option>
+            <mat-option value="TILL2">TILL2</mat-option>
+            <mat-option value="Confirmed">Confirmed</mat-option>
+            <mat-option value="Shipped">Shipped</mat-option>
+            <mat-option value="Returned">Returned</mat-option>
+            <mat-option value="Delivred">Delivred</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="width: 60%;">
+          <textarea matInput [(ngModel)]="note" name="note" id="note" placeholder="Note"></textarea>
+        </mat-form-field>
+
+        <mat-form-field  style="width: 60%;align-content: center">
+          <input  style="width: 60%;align-content: center" [(ngModel)]="tracking" name="tracking" id="tracking" matInput placeholder="Tracking number ">
+        </mat-form-field>
+
+
+        <div ><button type="submit"  (click)="modifierCmd()" mat-button>Modifier</button>
+          <button  [mat-dialog-close]="true" [mat-dialog-close]="true" disabled="{{disable}}" mat-button>Valider</button>
+        </div>
+      </div>
+    </mat-card>
+
+
+
+  </form>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
